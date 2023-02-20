@@ -1,0 +1,37 @@
+.inner {
+  display: grid;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  gap: 30px;
+  width: 250px;
+}
+.login {
+  width: 250px;
+  padding: 6px 3px;
+  border-radius: 10px;
+  border-color: black;
+}
+.password {
+  width: 250px;
+  padding: 6px 3px;
+  border-radius: 10px;
+  border-color: black;
+}
+.labelText {
+  top: -23px;
+  position: absolute;
+  font-family: "Ubuntu";
+}
+.labelContainer {
+  position: relative;
+}
+.submit {
+  background: #ff8e3c;
+  border-radius: 10px;
+  border: 0px;
+  padding: 7px;
+  font-family: "Ubuntu";
+  font-weight: 700;
+}
