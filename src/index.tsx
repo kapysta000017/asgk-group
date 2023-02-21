@@ -1,23 +1,31 @@
-import React from 'react';
-import { createRoot } from 'react-dom/client';
-import { Provider } from 'react-redux';
-import { store } from './app/store';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
-import './index.css';
+import { createRoot } from "react-dom/client"
+import Auth from "./pages/auth"
+import Customers from "./pages/customers"
+import "./index.css"
+import { RouterProvider, createBrowserRouter, Navigate } from "react-router-dom"
+import { Provider } from "react-redux"
+import store from "./store"
 
-const container = document.getElementById('root')!;
-const root = createRoot(container);
+const container = document.getElementById("root") as HTMLElement
+const root = createRoot(container)
 
-root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>
-);
+const router = createBrowserRouter([
+  {
+    path: "/auth",
+    element: <Auth />,
+  },
+  {
+    path: "/customers",
+    element: (
+      <Provider store={store}>
+        <Customers />,
+      </Provider>
+    ),
+  },
+  {
+    path: "/",
+    element: <Navigate to="/auth" replace={true} />,
+  },
+])
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+root.render(<RouterProvider router={router} />)
