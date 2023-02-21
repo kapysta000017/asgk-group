@@ -1,12 +1,11 @@
 import auth from "./index.module.css"
 import React, { useState } from "react"
-import axios from "axios"
-import setCookie from "../../logic/cookie/setCookie"
 import { useNavigate } from "react-router-dom"
+import onSubmitSetCookie from "./logic/onSubmitSetCookie"
 
 function Auth() {
   const navigate = useNavigate()
-  const [errorIs, setErrorIs] = useState("")
+  const [messageError, setMessageError] = useState("")
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -18,29 +17,11 @@ function Auth() {
       login: target.login.value,
       password: target.password.value,
     }
-    request(signIn)
+    onSubmitSetCookie(signIn, navigate, setMessageError)
   }
 
-  const request = async (singIn: { login: string; password: string }) => {
-    try {
-      const response = await axios("https://api.asgk-group.ru/test-auth-only", {
-        method: "POST",
-        data: singIn,
-      })
-      setCookie("singIn", response.data.auth_token, {
-        expires: "86400e3",
-        "max-age": "3600",
-      })
-      navigate("/customers", { replace: true })
-    } catch (error) {
-      const e = error as Error
-      const message = e.message
-      setErrorIs(() => message)
-    }
-  }
-
-  if (errorIs) {
-    return <div>Потише бричку, у нас ошибка</div>
+  if (messageError) {
+    return <div>Потише бричку, у нас ошибка {messageError}</div>
   }
 
   return (
