@@ -22,16 +22,20 @@
 .labelText {
   top: -23px;
   position: absolute;
-  font-family: "Ubuntu";
+  font-family: proxima-nova, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
 }
 .labelContainer {
   position: relative;
 }
 .submit {
+  cursor: pointer;
   background: #ff8e3c;
   border-radius: 10px;
   border: 0px;
   padding: 7px;
-  font-family: "Ubuntu";
+  font-family: proxima-nova, sans-serif;
   font-weight: 700;
+  margin-top: -10px;
 }

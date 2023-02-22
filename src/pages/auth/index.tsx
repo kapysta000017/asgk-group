@@ -5,7 +5,7 @@ import onSubmitSetCookie from "./logic/onSubmitSetCookie"
 
 function Auth() {
   const navigate = useNavigate()
-  const [messageError, setMessageError] = useState("")
+  const [messageError, setMessageError] = useState<string>("")
 
   const submit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
