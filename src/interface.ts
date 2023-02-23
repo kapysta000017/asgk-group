@@ -1,4 +1,4 @@
-export type CustomersType = {
+export interface CustomerType {
   user_id?: number
   id?: number
   template: string

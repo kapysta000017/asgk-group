@@ -6,10 +6,17 @@ import {
 import axios from "axios"
 import getCookie from "../logic/cookie/getCookie"
 import { RootState } from "./typeIndex"
-import { CustomersType } from "./typeCustomers"
+import { CustomerType } from "./../interface"
 
 const adapter = createEntityAdapter()
-const initialState = adapter.getInitialState()
+const initialState = adapter.getInitialState({
+  sortCustomerBonus: [] as Array<CustomerType>,
+  sortCustomerSumm: [] as Array<CustomerType>,
+  sortCustomerSummAll: [] as Array<CustomerType>,
+  sortCustomerVisits: [] as Array<CustomerType>,
+  sortCustomerVisitsAll: [] as Array<CustomerType>,
+  sortCustomerBarcode: [] as Array<CustomerType>,
+})
 
 export const fetchCustomers = createAsyncThunk(
   "customers/fetchCustomers",
@@ -28,7 +35,6 @@ export const fetchCustomers = createAsyncThunk(
     } catch (error) {
       const e = error as Error
       const message = e.message
-      console.log(message)
       return rejectWithValue(message)
     }
   }
@@ -40,8 +46,8 @@ const slice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchCustomers.fulfilled, (state, action) => {
-      const arrayCustomers = action.payload.passes as Array<CustomersType>
-      arrayCustomers.forEach((customer: CustomersType) => {
+      const arrayCustomers = action.payload.passes as Array<CustomerType>
+      arrayCustomers.forEach((customer: CustomerType) => {
         Object.defineProperty(
           customer,
           "id",
@@ -52,8 +58,10 @@ const slice = createSlice({
         )
         delete customer["user_id"]
       })
-      console.log(arrayCustomers)
       adapter.setAll(state, arrayCustomers)
+      state.sortCustomerBonus = arrayCustomers.sort((a, b) =>
+        a.bonus > b.bonus ? -1 : 1
+      )
     })
   },
 })

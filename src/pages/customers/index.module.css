@@ -1,0 +1,56 @@
+.table {
+  font-family: proxima-nova, sans-serif;
+  font-size: 14px;
+  width: 90%;
+  border-collapse: collapse;
+  text-align: left;
+  position: absolute;
+  top: 20%;
+  cursor: default;
+  transform: translate(5%, -50%);
+}
+
+.titlesTable {
+  color: #039;
+  border-bottom: 2px solid #6678b1;
+  cursor: pointer;
+}
+.titleArrow {
+  position: relative;
+  top: 2px;
+  margin-left: 4px;
+  transform: rotate(90deg);
+}
+
+.titleArrowUp {
+  position: relative;
+  top: 2px;
+  margin-left: 4px;
+  transform: rotate(-90deg);
+}
+
+.values {
+  line-height: 30px;
+}
+
+.values:hover th {
+  transition: 0.1s linear;
+  color: #788194;
+}
+.btnPush {
+  cursor: pointer;
+  background: #ff8e3c;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  border: 0;
+  padding: 10px;
+}
+.btnPush:hover {
+  transition: 0.1s linear;
+  background-color: #ec6a0c;
+}
+.tfoot {
+  position: absolute;
+  right: 0;
+}

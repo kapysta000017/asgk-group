@@ -1,0 +1,29 @@
+.form {
+  display: flex;
+  position: relative;
+  top: 9px;
+  transform: translate(5%, 100%);
+}
+.search {
+  width: 563px;
+  padding: 10px 15px 10px 20px;
+  border-radius: 30px;
+  outline: none;
+  border: 0px solid transparent;
+  font-family: proxima-nova, sans-serif;
+  font-size: 14px;
+}
+.button {
+  border: 0px solid transparent;
+  background: #ff8e3c;
+  width: 53px;
+  height: 37px;
+  border-radius: 19px;
+  position: relative;
+}
+.searchIcon {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

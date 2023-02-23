@@ -1,4 +1,4 @@
-import getCookie from "../../../../logic/cookie/getCookie"
+import getCookie from "../../../../../logic/cookie/getCookie"
 import axios from "axios"
 
 const submit = async (
