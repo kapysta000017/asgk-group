@@ -221,7 +221,7 @@ function Customers() {
                 }
                 return 0
               }
-              if (searchParams.get("") === "up") {
+              if (searchParams.get("Отчество") === "up") {
                 if (a.pat_name.toLowerCase() < b.pat_name.toLowerCase()) {
                   return -1
                 }
