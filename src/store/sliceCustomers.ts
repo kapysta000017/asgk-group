@@ -9,14 +9,7 @@ import { RootState } from "./typeIndex"
 import { CustomerType } from "./../interface"
 
 const adapter = createEntityAdapter()
-const initialState = adapter.getInitialState({
-  sortCustomerBonus: [] as Array<CustomerType>,
-  sortCustomerSumm: [] as Array<CustomerType>,
-  sortCustomerSummAll: [] as Array<CustomerType>,
-  sortCustomerVisits: [] as Array<CustomerType>,
-  sortCustomerVisitsAll: [] as Array<CustomerType>,
-  sortCustomerBarcode: [] as Array<CustomerType>,
-})
+const initialState = adapter.getInitialState()
 
 export const fetchCustomers = createAsyncThunk(
   "customers/fetchCustomers",
@@ -59,9 +52,6 @@ const slice = createSlice({
         delete customer["user_id"]
       })
       adapter.setAll(state, arrayCustomers)
-      state.sortCustomerBonus = arrayCustomers.sort((a, b) =>
-        a.bonus > b.bonus ? -1 : 1
-      )
     })
   },
 })

@@ -203,6 +203,33 @@ function Customers() {
         <tbody>
           {customers
             .sort((a, b) => {
+              if (searchParams.get("Имя") === "up") {
+                if (a.first_name.toLowerCase() < b.first_name.toLowerCase()) {
+                  return -1
+                }
+                if (a.first_name.toLowerCase() > b.first_name.toLowerCase()) {
+                  return 1
+                }
+                return 0
+              }
+              if (searchParams.get("Фамилия") === "up") {
+                if (a.last_name.toLowerCase() < b.last_name.toLowerCase()) {
+                  return -1
+                }
+                if (a.last_name.toLowerCase() > b.last_name.toLowerCase()) {
+                  return 1
+                }
+                return 0
+              }
+              if (searchParams.get("") === "up") {
+                if (a.pat_name.toLowerCase() < b.pat_name.toLowerCase()) {
+                  return -1
+                }
+                if (a.pat_name.toLowerCase() > b.pat_name.toLowerCase()) {
+                  return 1
+                }
+                return 0
+              }
               if (searchParams.get("Бонусы") === "up") {
                 return a.bonus > b.bonus ? -1 : 1
               }
